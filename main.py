@@ -30,18 +30,18 @@ if uploaded_file is not None:
     # Handling missing values
     if df.isnull().sum().sum() > 0:
         st.write("Choose how to handle missing values:")
-        replace_option = st.radio("Replace with:", ('Mean', 'Median', 'Drop', 'Forward Fill', 'Backward Fill'))
+        replace_option = st.radio("Replace with:", ['Mean', 'Median', 'Drop', 'Forward Fill', 'Backward Fill'])
 
         if replace_option == 'Mean':
-            df = df.fillna(df.mean())
+            df.fillna(df.mean(), inplace=True)
         elif replace_option == 'Median':
-            df = df.fillna(df.median())
+            df.fillna(df.median(), inplace=True)
         elif replace_option == 'Drop':
-            df = df.dropna()
+            df.dropna(inplace=True)
         elif replace_option == 'Forward Fill':
-            df = df.fillna(method='ffill')
+            df.fillna(method='ffill', inplace=True)
         elif replace_option == 'Backward Fill':
-            df = df.fillna(method='bfill')
+            df.fillna(method='bfill', inplace=True)
 
     # Data visualization
     st.subheader("Data Visualization")
@@ -64,14 +64,14 @@ if uploaded_file is not None:
 
         # Feature scaling
         st.subheader("Feature Scaling")
-        scale_option = st.radio("Scale features?", ('No', 'Standard Scaling'))
+        scale_option = st.radio("Scale features?", ['No', 'Standard Scaling'])
         if scale_option == 'Standard Scaling':
             scaler = StandardScaler()
             X = pd.DataFrame(scaler.fit_transform(X), columns=X.columns)
 
         # Train model
         st.subheader("Train Model")
-        model_option = st.selectbox("Choose model:", ('Random Forest', 'Logistic Regression', 'Support Vector Machine'))
+        model_option = st.selectbox("Choose model:", ['Random Forest', 'Logistic Regression', 'Support Vector Machine'])
         if model_option == 'Random Forest':
             model = RandomForestClassifier()
         elif model_option == 'Logistic Regression':
@@ -83,15 +83,15 @@ if uploaded_file is not None:
 
         if st.button("Train"):
             model.fit(X_train, y_train)
-            Y_pred = model.predict(X_test)
+            y_pred = model.predict(X_test)
 
             # Evaluation metrics
             st.subheader("Evaluation Metrics")
-            accuracy = accuracy_score(y_test, Y_pred)
+            accuracy = accuracy_score(y_test, y_pred)
             st.write(f"Accuracy: {accuracy}")
 
             st.subheader("Classification Report")
-            report = classification_report(y_test, Y_pred)
+            report = classification_report(y_test, y_pred)
             st.text(report)
 
             # Hyperparameter tuning (optional)
@@ -108,10 +108,10 @@ if uploaded_file is not None:
                 st.write("Best Parameters:")
                 st.write(grid_search.best_params_)
 
-                Y_pred_tuned = grid_search.predict(X_test)
-                accuracy_tuned = accuracy_score(y_test, Y_pred_tuned)
+                y_pred_tuned = grid_search.predict(X_test)
+                accuracy_tuned = accuracy_score(y_test, y_pred_tuned)
                 st.write(f"Tuned Accuracy: {accuracy_tuned}")
 
                 st.subheader("Tuned Classification Report")
-                report_tuned = classification_report(y_test, Y_pred_tuned)
+                report_tuned = classification_report(y_test, y_pred_tuned)
                 st.text(report_tuned)

@@ -12,24 +12,6 @@ PredictWise is a Streamlit application designed to simplify the process of data 
 
 ## How to Use
 1. **Upload File:**\
-Click the "Browse files" button to upload your dataset in CSV, TSV, or Excel format.
-
-2. **Data Cleaning:**\
-The application will display the count of null values for each column.\
-Choose how to handle missing values: Replace with Mean, Median, or Drop the rows with missing values.
-
-3. **Select X and Y Variables:**\
-Select the feature variables (X) and the target variable (Y) from the dropdown menus.
-
-4. **Train Model:**\
-The data will be split into training and testing sets.\
-Click the "Run LazyPredict" button to automatically train multiple machine learning models.
-
-5. **View Results:**\
-The application will display the performance metrics for all the models trained.\
-Detailed evaluation metrics for the best model will be shown.
-
-1. **Upload File:**\
 Click the "Browse files" button to upload a dataset in CSV, TSV, or Excel format.
 
 2. **Data Cleaning:**\

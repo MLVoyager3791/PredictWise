@@ -39,7 +39,7 @@ Detailed evaluation metrics for the best model will be shown.
 
 1. Clone the repository:
 ```
-git clone https://github.com/yourusername/automl-streamlit-lazypredict.git
+git clone https://github.com/MLVoyager3791/PredictWise.git
 ```
 2. Install the required packages:
 ```
@@ -60,3 +60,5 @@ streamlit run app.py
 
 ## Contributing
 Contributions are welcome! Please open an issue or submit a pull request for any improvements or bug fixes.
+
+⭐ Like what you see? Star the repo to help others discover it!

@@ -1,6 +1,6 @@
 pandas
 streamlit
-lazypredict
+lazypredict==0.2.12
 scikit-learn
 matplotlib
 seaborn
